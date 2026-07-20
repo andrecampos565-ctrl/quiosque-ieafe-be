@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Dashboard Financeiro IEAFE BE</title>
+
+<style>
+
+body {
+
+font-family: Arial;
+text-align:center;
+padding:30px;
+
+}
+
+.card {
+
+border:1px solid #ccc;
+border-radius:15px;
+padding:20px;
+margin:15px;
+
+}
+
+.numero {
+
+font-size:40px;
+font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>📊 Financeiro IEAFÉ BE</h1>
+
+
+<div class="card">
+
+<h2>Total recebido</h2>
+
+<div class="numero" id="total">
+0 €
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>Dízimos</h2>
+
+<div class="numero" id="dizimos">
+0 €
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>Ofertas</h2>
+
+<div class="numero" id="ofertas">
+0 €
+</div>
+
+</div>
+
+
+
+<script>
+
+fetch("http://localhost:3000/contribuicoes")
+
+.then(res=>res.json())
+
+.then(dados=>{
+
+
+let total=0;
+let dizimos=0;
+let ofertas=0;
+
+
+dados.forEach(item=>{
+
+
+total += Number(item.valor);
+
+
+if(item.tipo=="Dízimo"){
+
+dizimos += Number(item.valor);
+
+}
+
+
+if(item.tipo=="Oferta"){
+
+ofertas += Number(item.valor);
+
+}
+
+
+});
+
+
+document.getElementById("total").innerHTML =
+total+" €";
+
+
+document.getElementById("dizimos").innerHTML =
+dizimos+" €";
+
+
+document.getElementById("ofertas").innerHTML =
+ofertas+" €";
+
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
