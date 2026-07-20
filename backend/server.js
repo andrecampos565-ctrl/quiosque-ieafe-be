@@ -57,7 +57,29 @@ app.post('/visitante', (req, res) => {
 
 });
 });
+app.get('/visitantes', (req, res) => {
 
+    db.all(
+        "SELECT * FROM visitantes ORDER BY data_cadastro DESC",
+        [],
+        (err, linhas) => {
+
+            if(err){
+
+                res.json({
+                    erro: "Erro ao buscar visitantes"
+                });
+
+            } else {
+
+                res.json(linhas);
+
+            }
+
+        }
+    );
+
+});
 app.listen(3000, () => {
     console.log('Servidor iniciado na porta 3000');
 });
