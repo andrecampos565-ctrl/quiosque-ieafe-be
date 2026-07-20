@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Membros IEAFE BE</title>
+
+<style>
+
+body {
+
+font-family: Arial;
+text-align:center;
+padding:30px;
+
+}
+
+.card {
+
+border:1px solid #ccc;
+border-radius:15px;
+padding:20px;
+margin:15px;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>👥 Membros IEAFÉ BE</h1>
+
+
+<div id="lista"></div>
+
+
+
+<script>
+
+
+fetch("http://localhost:3000/membros")
+
+
+.then(res=>res.json())
+
+
+.then(dados=>{
+
+
+let html="";
+
+
+dados.forEach(membro=>{
+
+
+html += `
+
+<div class="card">
+
+<h2>${membro.nome}</h2>
+
+<p>📞 ${membro.telefone}</p>
+
+<p>📧 ${membro.email}</p>
+
+<p>⛪ ${membro.ministerio}</p>
+
+<p>${membro.observacoes}</p>
+
+</div>
+
+`;
+
+
+});
+
+
+document.getElementById("lista").innerHTML = html;
+
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
