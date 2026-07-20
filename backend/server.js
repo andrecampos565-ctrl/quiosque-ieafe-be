@@ -80,6 +80,40 @@ app.get('/visitantes', (req, res) => {
     );
 
 });
+app.post('/contribuicao', (req, res) => {
+
+    const contribuicao = req.body;
+
+    db.run(
+        `INSERT INTO contribuicoes 
+        (nome, tipo, valor, forma_pagamento)
+        VALUES (?, ?, ?, ?)`,
+        [
+            contribuicao.nome,
+            contribuicao.tipo,
+            contribuicao.valor,
+            contribuicao.forma_pagamento
+        ],
+        function(err){
+
+            if(err){
+
+                res.json({
+                    mensagem: "Erro ao registrar contribuição"
+                });
+
+            } else {
+
+                res.json({
+                    mensagem: "Contribuição registrada com sucesso!"
+                });
+
+            }
+
+        }
+    );
+
+});
 app.listen(3000, () => {
     console.log('Servidor iniciado na porta 3000');
 });
