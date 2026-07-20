@@ -1,0 +1,12 @@
+{
+  "name": "quiosque-ieafe-be",
+  "version": "1.0.0",
+  "description": "Sistema de autoatendimento IEAFE BE",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "dependencies": {
+    "express": "^5.0.0"
+  }
+}
