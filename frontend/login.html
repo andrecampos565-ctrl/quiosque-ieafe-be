@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Login Administrativo IEAFE BE</title>
+
+<style>
+
+body {
+font-family: Arial;
+text-align:center;
+padding:50px;
+}
+
+input {
+padding:15px;
+margin:10px;
+width:80%;
+}
+
+button {
+padding:15px 30px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🔐 Acesso Administrativo</h1>
+
+<input id="usuario" placeholder="Usuário">
+
+<br>
+
+<input id="senha" type="password" placeholder="Senha">
+
+<br>
+
+<button onclick="entrar()">
+Entrar
+</button>
+
+
+<script>
+
+function entrar(){
+
+let usuario =
+document.getElementById("usuario").value;
+
+let senha =
+document.getElementById("senha").value;
+
+
+if(usuario=="admin" && senha=="ieafe123"){
+
+window.location.href="admin.html";
+
+}
+
+else {
+
+alert("Usuário ou senha incorretos");
+
+}
+
+}
+
+</script>
+
+
+</body>
+
+</html>
