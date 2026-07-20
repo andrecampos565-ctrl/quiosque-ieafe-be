@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Contribuições IEAFE BE</title>
+
+<style>
+
+body {
+    font-family: Arial;
+    text-align:center;
+    padding:40px;
+}
+
+button {
+    width:80%;
+    max-width:400px;
+    padding:20px;
+    margin:15px;
+    font-size:22px;
+    border-radius:15px;
+}
+
+input, select {
+    width:80%;
+    padding:15px;
+    margin:10px;
+    font-size:18px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<h1>💳 Contribuições IEAFE BE</h1>
+
+<h2>Uma igreja para servir, um lugar para pertencer</h2>
+
+
+<input id="nome" placeholder="Nome (opcional)">
+
+
+<br>
+
+
+<select id="tipo">
+
+<option>Dízimo</option>
+<option>Oferta</option>
+<option>Missões</option>
+<option>Projeto da Igreja</option>
+
+</select>
+
+
+<br>
+
+
+<input id="valor" placeholder="Valor (€)" type="number">
+
+
+<br>
+
+
+<select id="pagamento">
+
+<option>Bancontact</option>
+<option>Payconiq</option>
+<option>Transferência</option>
+<option>Cartão</option>
+
+</select>
+
+
+<br>
+
+
+<button onclick="enviarContribuicao()">
+
+🙏 Continuar
+
+</button>
+
+
+<script>
+
+function enviarContribuicao(){
+
+const dados = {
+
+nome: document.getElementById("nome").value,
+
+tipo: document.getElementById("tipo").value,
+
+valor: document.getElementById("valor").value,
+
+forma_pagamento: document.getElementById("pagamento").value
+
+};
+
+
+fetch("http://localhost:3000/contribuicao",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify(dados)
+
+})
+
+
+.then(res=>res.json())
+
+.then(resultado=>{
+
+alert(resultado.mensagem);
+
+});
+
+
+}
+
+</script>
+
+
+</body>
+
+</html>
