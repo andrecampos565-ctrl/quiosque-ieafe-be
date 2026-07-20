@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Recibo IEAFE BE</title>
+
+<style>
+
+body {
+
+font-family: Arial;
+text-align:center;
+padding:50px;
+
+}
+
+
+.caixa {
+
+border:1px solid #ccc;
+border-radius:20px;
+padding:30px;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="caixa">
+
+<h1>⛪ IEAFÉ BE</h1>
+
+<h2>✅ Contribuição recebida</h2>
+
+
+<p id="tipo"></p>
+
+<p id="valor"></p>
+
+
+<p>
+Obrigado pela sua contribuição.
+</p>
+
+
+<p>
+Uma igreja para servir,
+<br>
+um lugar para pertencer.
+</p>
+
+
+</div>
+
+
+
+<script>
+
+
+const dados =
+JSON.parse(
+localStorage.getItem("contribuicao")
+);
+
+
+document.getElementById("tipo").innerHTML =
+"Tipo: " + dados.tipo;
+
+
+document.getElementById("valor").innerHTML =
+"Valor: " + dados.valor + " €";
+
+
+</script>
+
+
+</body>
+
+</html>
