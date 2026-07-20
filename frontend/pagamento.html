@@ -49,7 +49,21 @@ Confirmar pagamento
 
 function confirmar(){
 
+const dados =
+JSON.parse(
+localStorage.getItem("contribuicao")
+);
+
+
 const pagamento = {
+
+referencia: "IEAFE-" + Date.now(),
+
+tipo: dados.tipo,
+
+valor: dados.valor
+
+};
 
 referencia: "IEAFE-" + Date.now(),
 
