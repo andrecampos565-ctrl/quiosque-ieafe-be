@@ -211,6 +211,29 @@ app.post('/membro', (req, res) => {
     );
 
 });
+app.get('/membros', (req, res) => {
+
+    db.all(
+        "SELECT * FROM membros ORDER BY data_cadastro DESC",
+        [],
+        (err, linhas) => {
+
+            if(err){
+
+                res.json({
+                    erro:"Erro ao buscar membros"
+                });
+
+            } else {
+
+                res.json(linhas);
+
+            }
+
+        }
+    );
+
+});
 app.listen(3000, () => {
     console.log('Servidor iniciado na porta 3000');
 });
