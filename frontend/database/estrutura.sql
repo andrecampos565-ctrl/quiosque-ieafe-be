@@ -59,3 +59,22 @@ CREATE TABLE pagamentos_terminal (
     data_pagamento TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
 );
+-- Cadastro de membros
+
+CREATE TABLE membros (
+
+    id INT PRIMARY KEY AUTO_INCREMENT,
+
+    nome VARCHAR(100),
+
+    telefone VARCHAR(50),
+
+    email VARCHAR(100),
+
+    ministerio VARCHAR(100),
+
+    observacoes TEXT,
+
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
