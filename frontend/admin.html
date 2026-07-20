@@ -4,7 +4,48 @@
     <meta charset="UTF-8">
     <title>Painel Administrativo IEAFE BE</title>
 </head>
+<h2>📋 Visitantes cadastrados</h2>
 
+<div id="lista"></div>
+
+
+<script>
+
+fetch("http://localhost:3000/visitantes")
+
+.then(res => res.json())
+
+.then(dados => {
+
+    let html = "";
+
+    dados.forEach(visitante => {
+
+        html += `
+        <div style="
+        border:1px solid #ccc;
+        padding:15px;
+        margin:10px;
+        border-radius:10px;
+        ">
+
+        <h3>${visitante.nome}</h3>
+
+        <p>📞 ${visitante.telefone}</p>
+
+        <p>📧 ${visitante.email}</p>
+
+        </div>
+        `;
+
+    });
+
+
+    document.getElementById("lista").innerHTML = html;
+
+});
+
+</script>
 <body>
 
 <h1>Painel Administrativo IEAFE BE</h1>
