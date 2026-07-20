@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Financeiro IEAFE BE</title>
+
+<style>
+
+body {
+    font-family: Arial;
+    text-align:center;
+    padding:40px;
+}
+
+.card {
+
+    border:1px solid #ccc;
+    border-radius:15px;
+    padding:20px;
+    margin:20px;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<h1>💰 Financeiro IEAFE BE</h1>
+
+
+<div class="card">
+
+<h2>Total de contribuições</h2>
+
+<h1 id="total">0 €</h1>
+
+</div>
+
+
+<div id="lista"></div>
+
+
+<script>
+
+fetch("http://localhost:3000/contribuicoes")
+
+.then(res=>res.json())
+
+.then(dados=>{
+
+
+let total = 0;
+
+let html="";
+
+
+dados.forEach(item=>{
+
+
+total += Number(item.valor);
+
+
+html += `
+
+<div class="card">
+
+<h3>${item.tipo}</h3>
+
+<p>Valor: ${item.valor} €</p>
+
+<p>Pagamento: ${item.forma_pagamento}</p>
+
+<p>Data: ${item.data_contribuicao}</p>
+
+</div>
+
+`;
+
+
+});
+
+
+document.getElementById("total").innerHTML =
+total + " €";
+
+
+document.getElementById("lista").innerHTML =
+html;
+
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
