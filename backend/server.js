@@ -137,6 +137,43 @@ app.get('/contribuicoes', (req, res) => {
     );
 
 });
+app.post('/pagamento-confirmado', (req, res) => {
+
+    const pagamento = req.body;
+
+
+    db.run(
+        `INSERT INTO pagamentos_terminal
+        (referencia, tipo, valor, status, terminal)
+        VALUES (?, ?, ?, ?, ?)`,
+        [
+            pagamento.referencia,
+            pagamento.tipo,
+            pagamento.valor,
+            "PAGO",
+            "Stripe Terminal"
+        ],
+
+        function(err){
+
+            if(err){
+
+                res.json({
+                    mensagem:"Erro ao registrar pagamento"
+                });
+
+            } else {
+
+                res.json({
+                    mensagem:"Pagamento registrado com sucesso"
+                });
+
+            }
+
+        }
+    );
+
+});
 app.listen(3000, () => {
     console.log('Servidor iniciado na porta 3000');
 });
