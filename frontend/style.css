@@ -1,0 +1,42 @@
+body {
+
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #ffffff;
+    padding: 30px;
+
+}
+
+
+.logo {
+
+    font-size: 48px;
+    font-weight: bold;
+
+}
+
+
+.frase {
+
+    font-size: 26px;
+    margin-bottom: 40px;
+
+}
+
+
+.botao {
+
+    width: 80%;
+    max-width: 500px;
+
+    padding: 25px;
+
+    margin: 15px;
+
+    font-size: 28px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+}
