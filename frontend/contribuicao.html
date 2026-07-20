@@ -117,11 +117,11 @@ body:JSON.stringify(dados)
 })
 
 
-.then(res=>res.json())
-
 .then(resultado=>{
 
 alert(resultado.mensagem);
+
+window.location.href="pagamento.html";
 
 });
 
