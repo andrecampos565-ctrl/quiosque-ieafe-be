@@ -103,7 +103,10 @@ forma_pagamento: document.getElementById("pagamento").value
 
 };
 
-
+localStorage.setItem(
+"contribuicao",
+JSON.stringify(dados)
+);
 fetch("http://localhost:3000/contribuicao",{
 
 method:"POST",
