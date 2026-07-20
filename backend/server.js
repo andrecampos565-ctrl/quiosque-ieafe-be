@@ -174,6 +174,43 @@ app.post('/pagamento-confirmado', (req, res) => {
     );
 
 });
+app.post('/membro', (req, res) => {
+
+    const membro = req.body;
+
+
+    db.run(
+        `INSERT INTO membros
+        (nome, telefone, email, ministerio, observacoes)
+        VALUES (?, ?, ?, ?, ?)`,
+        [
+            membro.nome,
+            membro.telefone,
+            membro.email,
+            membro.ministerio,
+            membro.observacoes
+        ],
+
+        function(err){
+
+            if(err){
+
+                res.json({
+                    mensagem:"Erro ao cadastrar membro"
+                });
+
+            } else {
+
+                res.json({
+                    mensagem:"Membro cadastrado com sucesso!"
+                });
+
+            }
+
+        }
+    );
+
+});
 app.listen(3000, () => {
     console.log('Servidor iniciado na porta 3000');
 });
