@@ -26,7 +26,18 @@ app.post('/oracao', (req, res) => {
     });
 
 });
+app.post('/visitante', (req, res) => {
 
+    const visitante = req.body;
+
+    console.log("Novo visitante:", visitante);
+
+    res.json({
+        mensagem: "Visitante cadastrado com sucesso!",
+        dados: visitante
+    });
+
+});
 app.listen(3000, () => {
     console.log('Servidor iniciado na porta 3000');
 });
