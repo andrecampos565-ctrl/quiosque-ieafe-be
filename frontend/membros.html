@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Membros IEAFE BE</title>
+
+<style>
+
+body {
+
+font-family: Arial;
+text-align:center;
+padding:40px;
+
+}
+
+input, textarea, select {
+
+width:80%;
+padding:15px;
+margin:10px;
+font-size:18px;
+
+}
+
+button {
+
+padding:20px;
+font-size:22px;
+border-radius:15px;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>👥 Membros IEAFÉ BE</h1>
+
+
+<input id="nome" placeholder="Nome completo">
+
+
+<br>
+
+
+<input id="telefone" placeholder="Telefone">
+
+
+<br>
+
+
+<input id="email" placeholder="E-mail">
+
+
+<br>
+
+
+<select id="ministerio">
+
+<option>UVAFÉ</option>
+
+<option>Useafé</option>
+
+<option>UCAFÉ</option>
+
+<option>UMAFÉ</option>
+
+<option>Outro</option>
+
+</select>
+
+
+<br>
+
+
+<textarea id="observacoes"
+placeholder="Observações">
+</textarea>
+
+
+<br>
+
+
+<button onclick="cadastrar()">
+
+Cadastrar membro
+
+</button>
+
+
+
+<script>
+
+function cadastrar(){
+
+
+const membro = {
+
+
+nome:
+document.getElementById("nome").value,
+
+
+telefone:
+document.getElementById("telefone").value,
+
+
+email:
+document.getElementById("email").value,
+
+
+ministerio:
+document.getElementById("ministerio").value,
+
+
+observacoes:
+document.getElementById("observacoes").value
+
+
+};
+
+
+fetch("http://localhost:3000/membro",{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":"application/json"
+
+},
+
+body:JSON.stringify(membro)
+
+
+})
+
+
+.then(res=>res.json())
+
+.then(resultado=>{
+
+
+alert(resultado.mensagem);
+
+
+});
+
+
+}
+
+</script>
+
+
+</body>
+
+</html>
