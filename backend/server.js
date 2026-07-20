@@ -114,6 +114,29 @@ app.post('/contribuicao', (req, res) => {
     );
 
 });
+app.get('/contribuicoes', (req, res) => {
+
+    db.all(
+        "SELECT * FROM contribuicoes ORDER BY data_contribuicao DESC",
+        [],
+        (err, linhas) => {
+
+            if(err){
+
+                res.json({
+                    erro: "Erro ao buscar contribuições"
+                });
+
+            } else {
+
+                res.json(linhas);
+
+            }
+
+        }
+    );
+
+});
 app.listen(3000, () => {
     console.log('Servidor iniciado na porta 3000');
 });
