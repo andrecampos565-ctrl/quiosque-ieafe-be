@@ -1,6 +1,6 @@
 // Backend do Quiosque IEAFE BE
 
-const express = require('express');
+const express = require('express');const db = require('./database');
 
 const app = express();
 
@@ -24,20 +24,40 @@ app.post('/oracao', (req, res) => {
         mensagem: "Pedido de oração recebido!",
         dados: pedido
     });
-
-});
 app.post('/visitante', (req, res) => {
 
     const visitante = req.body;
 
-    console.log("Novo visitante:", visitante);
+    db.run(
+        `INSERT INTO visitantes (nome, telefone, email)
+        VALUES (?, ?, ?)`,
+        [
+            visitante.nome,
+            visitante.telefone,
+            visitante.email
+        ],
+        function(err){
 
-    res.json({
-        mensagem: "Visitante cadastrado com sucesso!",
-        dados: visitante
-    });
+            if(err){
+
+                res.json({
+                    mensagem: "Erro ao cadastrar visitante"
+                });
+
+            } else {
+
+                res.json({
+                    mensagem: "Visitante cadastrado com sucesso!"
+                });
+
+            }
+
+        }
+    );
 
 });
+});
+
 app.listen(3000, () => {
     console.log('Servidor iniciado na porta 3000');
 });
