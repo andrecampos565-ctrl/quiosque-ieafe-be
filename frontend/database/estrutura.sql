@@ -40,3 +40,22 @@ CREATE TABLE contribuicoes (
     data_contribuicao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
 );
+-- Pagamentos realizados no terminal
+
+CREATE TABLE pagamentos_terminal (
+
+    id INT PRIMARY KEY AUTO_INCREMENT,
+
+    referencia VARCHAR(100),
+
+    tipo VARCHAR(50),
+
+    valor DECIMAL(10,2),
+
+    status VARCHAR(30),
+
+    terminal VARCHAR(100),
+
+    data_pagamento TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
