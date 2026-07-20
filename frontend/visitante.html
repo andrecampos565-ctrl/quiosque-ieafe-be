@@ -35,19 +35,55 @@ button {
 Seja bem-vindo à IEAFE BE!
 </p>
 
-<input placeholder="Seu nome">
+<input id="nome" placeholder="Seu nome">
 
 <br>
 
-<input placeholder="Seu telefone">
+<input id="telefone" placeholder="Seu telefone">
 
 <br>
 
-<input placeholder="Seu e-mail">
+<input id="email" placeholder="Seu e-mail">
 
 <br>
 
-<button>Enviar cadastro</button>
+<button onclick="enviarCadastro()">
+Enviar cadastro
+</button>
+
+<script>
+
+function enviarCadastro(){
+
+const dados = {
+    nome: document.getElementById("nome").value,
+    telefone: document.getElementById("telefone").value,
+    email: document.getElementById("email").value
+};
+
+fetch("http://localhost:3000/visitante", {
+
+    method: "POST",
+
+    headers: {
+        "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify(dados)
+
+})
+
+.then(res => res.json())
+
+.then(resultado => {
+
+    alert(resultado.mensagem);
+
+});
+
+}
+
+</script>
 
 </body>
 
